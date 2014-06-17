@@ -3,7 +3,8 @@ opentalking.github.io
 
 #### bootstrap 的一些使用文档
 
-中文的
+__中文__
 <http://v3.bootcss.com/getting-started/>
-English
+
+__English__
 <http://getbootstrap.com/getting-started/>
