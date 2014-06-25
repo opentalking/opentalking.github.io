@@ -66,10 +66,10 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
-.navbar-wrapper .navbar {
+/*.navbar-wrapper .navbar {
   padding-left: 15px;
   padding-right: 15px;
-}
+}*/
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
@@ -130,11 +130,6 @@ body {
   .navbar-wrapper .navbar {
     padding-left:  0;
     padding-right: 0;
-  }
-
-  /* The navbar becomes detached from the top, so we round the corners */
-  .navbar-wrapper .navbar {
-    border-radius: 4px;
   }
 
   .featurette-heading {

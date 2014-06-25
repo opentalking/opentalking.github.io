@@ -10,5 +10,11 @@ body {
 /* Navbar positioning foo */
 .navbar-wrapper {
 	margin-top: 20px;
+
+}
+
+/* The navbar becomes detached from the top, so we round the corners */
+.navbar-wrapper .navbar {
+	border-radius: 4px;
 }
 
