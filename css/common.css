@@ -1,0 +1,14 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+	padding-bottom: 40px;
+	background: #777;
+}
+
+/* Navbar positioning foo */
+.navbar-wrapper {
+	margin-top: 20px;
+}
+
