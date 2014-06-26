@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>&lt;github-card&gt;: A web component to show a profile-card for your Github account.</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="import" href="github-card.html">
+</head>
+<body>
+
+  <header>
+    <h1>&lt;github-card&gt;</h1>
+    <h2>A web component to show a profile-card for your Github account.</h2>
+  </header>
+  <output id="cards">
+      <figure>
+         <github-card user="Haoxiqiang"><github-card>
+      </figure>
+    </output>
+ 
+
+  <script>
+    window.onload = function() {
+     var output = document.querySelector('#cards');
+
+     var  github = document.createElement('github-card');
+     github.setAttribute('user', "Haoxiqiang");
+     output.innerHTML = '';
+     output.appendChild(github);
+   }
+</script>
+</body>
+</html>
