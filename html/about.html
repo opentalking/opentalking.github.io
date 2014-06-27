@@ -15,50 +15,124 @@
   <link href="../css/bootstrap.css" rel="stylesheet">
 
   <link href="../css/common.css" rel="stylesheet">
-  <link href="../css/about.css" rel="stylesheet">
+  <!--  <link href="../css/about.css" rel="stylesheet"> -->
 
   <!-- Custom styles for this template -->
   <style type="text/css">
-
-    .self_footer{
-      padding-top: 500px;
+    .user {
+      font-family: "Helvetica", Arial, sans-serif;
+      display: inline-block;
+      width: 265px;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 6px;
+      position: relative;
+      background-color: #2E353C;
+      text-align: center;
+      color: #fff;
+      font-weight: 100;
+      transition: background 1000ms ease-out;
+    }
+    .user-data {
+      background: #fff url('../images/github.png') no-repeat 5px 5px;
+      background-size: 25px;
+      height: 100px;
+      border: 1px solid #D5D5D5;
+      border-bottom:0;
+      overflow: visible;
     }
 
-  </style>
+    .user-stats {
+      border-top: 1px groove #999;
+      position: relative;
+      top: 155px;
+    }
+    .user-avatar {
+      display: inline-block;
+      margin: 20px 0 10px;
+    }
+    .user-avatar img {
+      border-radius: 100%;
+      height: 120px;
+      width: 120px;
+      border: 3px solid #fff;
+      vertical-align: middle;
+      background-color: #fff;
+    }
+    .user-repos,
+    .user-following,
+    .user-followers {
+      display: inline-block;
+      font-size: 22px;
+      color: #999;
+    }
 
-  <script>
 
-    function fillUser(user) {
+    .col-lg-4{
+     text-align:center;
+   }
 
-    };
+   .user-repos,
+   .user-followers{
+    text-transform: uppercase;
+    display: block;
+    font-size: 11px;
+    color: #666;
+    text-decoration: none;
+    font-weight: normal;
+    line-height: 1.7em;
+  }
 
-    window.onload = function() {
 
-      var url = 'https://api.github.com/users/';
-      var users = new Array ("Haoxiqiang","7heaven");
-      var xhr;
+</style>
 
-      for (var i = users.length - 1; i >= 0; i--) {
-        xhr = new XMLHttpRequest();
-        xhr.open('GET', url + users[i]);
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === xhr.DONE) {
-            status = xhr.status;
+<script>
 
-            if ((status >= 200 && status < 300) || status === 304 || status === 0) {
-              response = JSON.parse(xhr.response || xhr.responseText);
-              fillUser(response);
-            }
+  function fillUser(user) {
+
+    $(".user-account").textContent = user.login;
+
+    $(".user-name").textContent = user.email;
+
+    $(".avatar_url").attr("src",user.avatar_url);
+
+    $(".user-repos").textContent = user.public_repos;
+    $(".user-followers").textContent = user.followers;
+
+
+
+    $(".user-github-url").href = user.html_url;
+    $(".user-repos-url").href = user.html_url.concat('?tab=repositories');
+    $(".user-followers-url").href = user.html_url.concat('/followers');
+  };
+
+  window.onload = function() {
+
+    var url = 'https://api.github.com/users/';
+    var users = new Array ("Haoxiqiang");
+    var xhr;
+
+    for (var i = users.length - 1; i >= 0; i--) {
+      xhr = new XMLHttpRequest();
+      xhr.open('GET', url + users[i]);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === xhr.DONE) {
+          status = xhr.status;
+
+          if ((status >= 200 && status < 300) || status === 304 || status === 0) {
+            response = JSON.parse(xhr.response || xhr.responseText);
+            fillUser(response);
           }
+        }
 
 
-        };
-        xhr.send();
       };
-    }
+      xhr.send();
+    };
+  }
 
 
-  </script>
+</script>
 
 
 </head>
@@ -99,38 +173,55 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-         <div class="user spinner">
+         <div class="user">
+          <div class="user-data">
+            <div class="user-avatar">
+              <img class="avatar_url" />
+            </div>
+            <div class="user-name"></div>
 
-         </div>
+            <div class="user-account">
+              <a class="user-github-url"></a>
+
+            </div>
+          </div>
+          <div class="user-stats">
+            <div class="user-repos" data-stats="repos">
+             <a class="user-repos-url">Repos</a>
+           </div>
+           <div class="user-followers" data-stats="followers">
+            <a class="user-followers-url">Followers</a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.col-lg-4 -->
+
+    <div class="col-lg-4">
+      <h2>Heading</h2>
+      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <h2>Heading</h2>
+      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+
+  <div class="container marketing">
 
 
-       </div><!-- /.col-lg-4 -->
-       <div class="col-lg-4">
-        <h2>Heading</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
 
-    <div class="container marketing">
+   <!-- /END THE FEATURETTES -->
 
+   <!-- FOOTER -->
+   <footer class="self_footer">
+     <hr class="featurette-divider">
+     <p class="pull-right"><a href="#">Back to top</a></p>
+     <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+   </footer>
 
-
-     <!-- /END THE FEATURETTES -->
-
-     <!-- FOOTER -->
-     <footer class="self_footer">
-       <hr class="featurette-divider">
-       <p class="pull-right"><a href="#">Back to top</a></p>
-       <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-     </footer>
-
-   </div>
+ </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
