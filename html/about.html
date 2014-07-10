@@ -111,12 +111,11 @@
 
     window.onload = function() {
 
-      var url = 'https://api.github.com/users/';
-      var users = new Array ("Haoxiqiang","akitaka","7heaven");
-      var xhr;
+      var url = "https://api.github.com/users/";
+      var users = new Array ("Haoxiqiang","akitaka","7heaven","mthread");
 
-      for (var i = 0; i < users.length; i--) {
-        xhr = new XMLHttpRequest();
+      for (var i = 0; i < users.length; i++) {
+        var xhr = new XMLHttpRequest();
         xhr.open('GET', url + users[i]);
         xhr.onreadystatechange = function () {
           if (xhr.readyState === xhr.DONE) {
@@ -124,12 +123,10 @@
 
             if ((status >= 200 && status < 300) || status === 304 || status === 0) {
               response = JSON.parse(xhr.response || xhr.responseText);
-                    $(".user-account")[i].append("<a class='user-name'>" + response.login +"</a><br />" 
+              $($(".user-account")[i]).append("<a class='user-name'>" + response.login +"</a><br />" 
                       + "<span class='user-email'>" + response.email + "</span>");
             }
           }
-
-
         };
         xhr.send();
     };
