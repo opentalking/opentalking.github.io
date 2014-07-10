@@ -112,7 +112,8 @@
     window.onload = function() {
 
       var url = "https://api.github.com/users/";
-      var users = new Array ("Haoxiqiang","akitaka","7heaven","mthread");
+      // var users = new Array ("Haoxiqiang","akitaka","7heaven","mthread");
+      var users = new Array ("Haoxiqiang");
 
       for (var i = 0; i < users.length; i++) {
         var xhr = new XMLHttpRequest();
@@ -125,6 +126,9 @@
               response = JSON.parse(xhr.response || xhr.responseText);
               $($(".user-account")[i]).append("<a class='user-name'>" + response.login +"</a><br />" 
                       + "<span class='user-email'>" + response.email + "</span>");
+              $($(".avatar_url")[i]).attr("src",response.avatar_url);
+              $($(".user-repos-value")[i]).text(response.public_repos);
+              $($(".user-followers-value")[i]).text(response.followers);
             }
           }
         };
@@ -185,12 +189,12 @@
           </div>
           <div class="user-stats">
             <div class="user-repos user-stats-attr">
-              <a class="user-repos-url">Repos</a><br/>
-              <span class="user-repos-value">129</span>
+              <span class="user-repos-value">129</span><br/>
+              <a class="user-repos-url">Repos</a>
             </div>
             <div class="user-followers user-stats-attr">
-              <a class="user-followers-url">Followers</a><br/>
-              <span class="user-followers-value">183</span>
+              <span class="user-followers-value">183</span><br/>
+              <a class="user-followers-url">Followers</a>             
             </div>
           </div>
         </div>
@@ -209,12 +213,12 @@
           </div>
           <div class="user-stats">
             <div class="user-repos user-stats-attr">
-             <a class="user-repos-url">Repos</a><br/>
-             <span class="user-repos-value">129</span>
-           </div>
+              <span class="user-repos-value">129</span><br/>
+              <a class="user-repos-url">Repos</a>           
+            </div>
            <div class="user-followers user-stats-attr">
-            <a class="user-followers-url">Followers</a><br/>
-            <span class="user-followers-value">183</span>
+              <span class="user-followers-value">183</span><br/>
+              <a class="user-followers-url">Followers</a>          
           </div>
         </div>
         </div>
@@ -232,12 +236,12 @@
           </div>
           <div class="user-stats">
             <div class="user-repos user-stats-attr">
-             <a class="user-repos-url">Repos</a><br/>
-             <span class="user-repos-value">129</span>
+              <span class="user-repos-value">129</span><br/>
+              <a class="user-repos-url">Repos</a>
            </div>
            <div class="user-followers user-stats-attr">
-            <a class="user-followers-url">Followers</a><br/>
-            <span class="user-followers-value">183</span>
+              <span class="user-followers-value">183</span><br/>
+              <a class="user-followers-url">Followers</a>
           </div>
         </div>
         </div>
