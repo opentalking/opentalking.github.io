@@ -103,6 +103,10 @@
     .container{
       text-align: center;
     }
+    .row{
+      margin-top: 10px;
+      padding-bottom: 10px;
+    }
 
 
   </style>
@@ -112,7 +116,7 @@
     window.onload = function() {
 
       var url = "https://api.github.com/users/";
-      var users = new Array ("Haoxiqiang","akitaka","7heaven");
+      var users = new Array ("Haoxiqiang","akitaka","7heaven","mthread","JakeWharton","JamesSmith");
       var index = 0;
       // var users = new Array ("Haoxiqiang");     
 
@@ -127,17 +131,17 @@
             //   alert(index);
 
             $(useraccounts[index]).append("<a class='user-name'>" + data.login +"</a><br />" 
-                      + "<span class='user-email'>" + data.email + "</span>");
+              + "<span class='user-email'>" + data.email + "</span>");
             $(avatarurls[index]).attr("src",data.avatar_url);
             $(userrepos[index]).text(data.public_repos);
             $(userfollowers[index]).text(data.followers);
             index++;
-         });
-    };
-  }
+          });
+      };
+    }
 
 
-</script>
+  </script>
 
 
 </head>
@@ -184,7 +188,7 @@
               <img class="avatar_url"/>
             </div>
             <div class="user-account">
-              
+
             </div>
           </div>
           <div class="user-stats">
@@ -202,52 +206,124 @@
 
 
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-         <div class="user">
-          <div class="user-data">
-            <div class="user-avatar">
-              <img class="avatar_url"/>
-            </div>
-            <div class="user-account">
-              
-            </div>
+       <div class="user">
+        <div class="user-data">
+          <div class="user-avatar">
+            <img class="avatar_url"/>
           </div>
-          <div class="user-stats">
-            <div class="user-repos user-stats-attr">
-              <span class="user-repos-value">129</span><br/>
-              <a class="user-repos-url">Repos</a>           
-            </div>
-           <div class="user-followers user-stats-attr">
-              <span class="user-followers-value">183</span><br/>
-              <a class="user-followers-url">Followers</a>          
-          </div>
-        </div>
-        </div>
-      </div>
+          <div class="user-account">
 
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-         <div class="user">
-          <div class="user-data">
-            <div class="user-avatar">
-              <img class="avatar_url"/>
-            </div>
-            <div class="user-account">
-            
-            </div>
-          </div>
-          <div class="user-stats">
-            <div class="user-repos user-stats-attr">
-              <span class="user-repos-value">129</span><br/>
-              <a class="user-repos-url">Repos</a>
-           </div>
-           <div class="user-followers user-stats-attr">
-              <span class="user-followers-value">183</span><br/>
-              <a class="user-followers-url">Followers</a>
           </div>
         </div>
+        <div class="user-stats">
+          <div class="user-repos user-stats-attr">
+            <span class="user-repos-value">129</span><br/>
+            <a class="user-repos-url">Repos</a>           
+          </div>
+          <div class="user-followers user-stats-attr">
+            <span class="user-followers-value">183</span><br/>
+            <a class="user-followers-url">Followers</a>          
+          </div>
         </div>
       </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+     <div class="user">
+      <div class="user-data">
+        <div class="user-avatar">
+          <img class="avatar_url"/>
+        </div>
+        <div class="user-account">
+
+        </div>
+      </div>
+      <div class="user-stats">
+        <div class="user-repos user-stats-attr">
+          <span class="user-repos-value">129</span><br/>
+          <a class="user-repos-url">Repos</a>
+        </div>
+        <div class="user-followers user-stats-attr">
+          <span class="user-followers-value">183</span><br/>
+          <a class="user-followers-url">Followers</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div><!-- /.row -->
+<div class="row">
+  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+   <div class="user">
+    <div class="user-data">
+      <div class="user-avatar">
+        <img class="avatar_url"/>
+      </div>
+      <div class="user-account">
 
+      </div>
+    </div>
+    <div class="user-stats">
+      <div class="user-repos user-stats-attr">
+        <span class="user-repos-value">129</span><br/>
+        <a class="user-repos-url">Repos</a>
+      </div>
+      <div class="user-followers user-stats-attr">
+        <span class="user-followers-value">183</span><br/>
+        <a class="user-followers-url">Followers</a>             
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+ <div class="user">
+  <div class="user-data">
+    <div class="user-avatar">
+      <img class="avatar_url"/>
+    </div>
+    <div class="user-account">
+
+    </div>
+  </div>
+  <div class="user-stats">
+    <div class="user-repos user-stats-attr">
+      <span class="user-repos-value">129</span><br/>
+      <a class="user-repos-url">Repos</a>           
+    </div>
+    <div class="user-followers user-stats-attr">
+      <span class="user-followers-value">183</span><br/>
+      <a class="user-followers-url">Followers</a>          
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+ <div class="user">
+  <div class="user-data">
+    <div class="user-avatar">
+      <img class="avatar_url"/>
+    </div>
+    <div class="user-account">
+
+    </div>
+  </div>
+  <div class="user-stats">
+    <div class="user-repos user-stats-attr">
+      <span class="user-repos-value">129</span><br/>
+      <a class="user-repos-url">Repos</a>
+    </div>
+    <div class="user-followers user-stats-attr">
+      <span class="user-followers-value">183</span><br/>
+      <a class="user-followers-url">Followers</a>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
 <div class="container">
 
 
