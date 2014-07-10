@@ -107,8 +107,18 @@
       margin-top: 10px;
       padding-bottom: 10px;
     }
-
-
+    .user-repos-url,.user-followers-url{
+      color: #0074D9;
+    }
+    .user-repos-value,.user-followers-value{
+      color: #DDDDDD;
+    }
+    a:hover { 
+      color:#4499EE; 
+      text-decoration:none; 
+      border-bottom: 1px #FFDC00 dotted 
+    } 
+    
   </style>
 
   <script>
@@ -122,6 +132,7 @@
 
       var useraccounts = $(".user-account");
       var avatarurls = $(".avatar_url");
+      var avatarlinks = $(".avatar_link");
       var userrepos= $(".user-repos-value");
       var userfollowers = $(".user-followers-value");
 
@@ -130,9 +141,10 @@
         $.getJSON(url + users[i],"",function(data){
             //   alert(index);
 
-            $(useraccounts[index]).append("<a class='user-name'>" + data.login +"</a><br />" 
+            $(useraccounts[index]).append("<a class='user-name ' target='_blank'"+"href = "+data.html_url+" >" + data.login +"</a><br />" 
               + "<span class='user-email'>" + data.email + "</span>");
             $(avatarurls[index]).attr("src",data.avatar_url);
+            $(avatarlinks[index]).attr("href",data.html_url);
             $(userrepos[index]).text(data.public_repos);
             $(userfollowers[index]).text(data.followers);
             index++;
@@ -185,7 +197,7 @@
          <div class="user">
           <div class="user-data">
             <div class="user-avatar">
-              <img class="avatar_url"/>
+              <a class="avatar_link" target='_blank'><img class="avatar_url"/></a>
             </div>
             <div class="user-account">
 
@@ -194,11 +206,11 @@
           <div class="user-stats">
             <div class="user-repos user-stats-attr">
               <span class="user-repos-value">129</span><br/>
-              <a class="user-repos-url">Repos</a>
+              <span class="user-repos-url">Repos</span>
             </div>
             <div class="user-followers user-stats-attr">
               <span class="user-followers-value">183</span><br/>
-              <a class="user-followers-url">Followers</a>             
+              <span class="user-followers-url">Followers</span>             
             </div>
           </div>
         </div>
@@ -209,7 +221,7 @@
        <div class="user">
         <div class="user-data">
           <div class="user-avatar">
-            <img class="avatar_url"/>
+            <a class="avatar_link" target='_blank'><img class="avatar_url"/></a>
           </div>
           <div class="user-account">
 
@@ -218,11 +230,11 @@
         <div class="user-stats">
           <div class="user-repos user-stats-attr">
             <span class="user-repos-value">129</span><br/>
-            <a class="user-repos-url">Repos</a>           
+            <span class="user-repos-url">Repos</span>           
           </div>
           <div class="user-followers user-stats-attr">
             <span class="user-followers-value">183</span><br/>
-            <a class="user-followers-url">Followers</a>          
+            <span class="user-followers-url">Followers</span>          
           </div>
         </div>
       </div>
@@ -232,7 +244,7 @@
      <div class="user">
       <div class="user-data">
         <div class="user-avatar">
-          <img class="avatar_url"/>
+          <a class="avatar_link" target='_blank'><img class="avatar_url"/></a>
         </div>
         <div class="user-account">
 
@@ -241,11 +253,11 @@
       <div class="user-stats">
         <div class="user-repos user-stats-attr">
           <span class="user-repos-value">129</span><br/>
-          <a class="user-repos-url">Repos</a>
+          <span class="user-repos-url">Repos</span>
         </div>
         <div class="user-followers user-stats-attr">
           <span class="user-followers-value">183</span><br/>
-          <a class="user-followers-url">Followers</a>
+          <span class="user-followers-url">Followers</span>
         </div>
       </div>
     </div>
@@ -257,7 +269,7 @@
    <div class="user">
     <div class="user-data">
       <div class="user-avatar">
-        <img class="avatar_url"/>
+        <a class="avatar_link" target='_blank'><img class="avatar_url"/></a>
       </div>
       <div class="user-account">
 
@@ -266,11 +278,11 @@
     <div class="user-stats">
       <div class="user-repos user-stats-attr">
         <span class="user-repos-value">129</span><br/>
-        <a class="user-repos-url">Repos</a>
+        <span class="user-repos-url">Repos</span>
       </div>
       <div class="user-followers user-stats-attr">
         <span class="user-followers-value">183</span><br/>
-        <a class="user-followers-url">Followers</a>             
+        <span class="user-followers-url">Followers</span>             
       </div>
     </div>
   </div>
@@ -281,7 +293,7 @@
  <div class="user">
   <div class="user-data">
     <div class="user-avatar">
-      <img class="avatar_url"/>
+      <a class="avatar_link" target='_blank'><img class="avatar_url"/></a>
     </div>
     <div class="user-account">
 
@@ -290,11 +302,11 @@
   <div class="user-stats">
     <div class="user-repos user-stats-attr">
       <span class="user-repos-value">129</span><br/>
-      <a class="user-repos-url">Repos</a>           
+      <span class="user-repos-url">Repos</span>           
     </div>
     <div class="user-followers user-stats-attr">
       <span class="user-followers-value">183</span><br/>
-      <a class="user-followers-url">Followers</a>          
+      <span class="user-followers-url">Followers</span>          
     </div>
   </div>
 </div>
@@ -304,7 +316,7 @@
  <div class="user">
   <div class="user-data">
     <div class="user-avatar">
-      <img class="avatar_url"/>
+      <a class="avatar_link" target='_blank'><img class="avatar_url"/></a>
     </div>
     <div class="user-account">
 
@@ -313,17 +325,18 @@
   <div class="user-stats">
     <div class="user-repos user-stats-attr">
       <span class="user-repos-value">129</span><br/>
-      <a class="user-repos-url">Repos</a>
+      <span class="user-repos-url">Repos</span>
     </div>
     <div class="user-followers user-stats-attr">
       <span class="user-followers-value">183</span><br/>
-      <a class="user-followers-url">Followers</a>
+      <span class="user-followers-url">Followers</span>
     </div>
   </div>
 </div>
 </div>
 </div>
 </div>
+
 <div class="container">
 
 
