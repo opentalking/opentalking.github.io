@@ -109,54 +109,30 @@
 
   <script>
 
-    function fillUser(user) {
-
-      $(".user-account").append("<a class='user-name'>" + user.login +"</a><br />" 
-        + "<span class='user-email'>" + user.email + "</span>");
-
-      $(".avatar_url").attr("src",user.avatar_url);
-
-      $(".user-repos-value").textContent = user.public_repos;
-      $(".user-followers-value").textContent = user.followers;
-
-      $(".user-github-url").href = user.html_url;
-      $(".user-repos-url").href = user.html_url.concat('?tab=repositories');
-      $(".user-followers-url").href = user.html_url.concat('/followers');
-    };
-
     window.onload = function() {
 
+      var url = 'https://api.github.com/users/';
+      var users = new Array ("Haoxiqiang","akitaka","7heaven");
+      var xhr;
+
+      for (var i = 0; i < users.length; i--) {
+        xhr = new XMLHttpRequest();
+        xhr.open('GET', url + users[i]);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === xhr.DONE) {
+            status = xhr.status;
+
+            if ((status >= 200 && status < 300) || status === 304 || status === 0) {
+              response = JSON.parse(xhr.response || xhr.responseText);
+                    $(".user-account")[i].append("<a class='user-name'>" + response.login +"</a><br />" 
+                      + "<span class='user-email'>" + response.email + "</span>");
+            }
+          }
 
 
-      // $(".user-name").attr("textContent","user.login");
-
-      $(".user-account").append("<a class='user-name'>" + "abcd" +"</a><br />" 
-        + "<span class='user-email'>" + "222@2222" + "</span>");
-
-
-
-
-    //   var url = 'https://api.github.com/users/';
-    //   var users = new Array ("Haoxiqiang","Haoxiqiang");
-    //   var xhr;
-
-    //   for (var i = users.length - 1; i >= 0; i--) {
-    //     xhr = new XMLHttpRequest();
-    //     xhr.open('GET', url + users[i]);
-    //     xhr.onreadystatechange = function () {
-    //       if (xhr.readyState === xhr.DONE) {
-    //         status = xhr.status;
-
-    //         if ((status >= 200 && status < 300) || status === 304 || status === 0) {
-    //           response = JSON.parse(xhr.response || xhr.responseText);
-    //           fillUser(response);
-    //         }
-    //       }
-
-
-    //     };
-    //   xhr.send();
-    // };
+        };
+        xhr.send();
+    };
   }
 
 
