@@ -8,16 +8,55 @@
   <meta name="keywords" content="郝锡强" />
   <meta name="description" content="个人简历" />
 
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+
   <link charset="utf-8" href="../css/reset-fonts-grids.css" media="all" rel="stylesheet" type="text/css">
   <link charset="utf-8" href="../css/resume.css" media="all" rel="stylesheet" type="text/css">
   <link charset="utf-8" href="../css/print.css" media="print" rel="stylesheet" type="text/css">
+  <link charset="utf-8" href="../css/jspdf/editor.css" media="print" rel="stylesheet" type="text/css">
   
+
+  <!-- Code editor -->
+
+  <script src="https://cdn.jsdelivr.net/ace/1.1.01/noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="../js/jspdf/jspdf.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/jspdf/html2canvas.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/jspdf/source-code-pro.js" type="text/javascript" charset="utf-8"></script>
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+
+      
+      $('.download-pdf').click(function(){
+        var name = $("meta[name=keywords]").attr("content");
+        var type = $("meta[name=description]").attr("content");
+
+        $('.download-pdf').hide();
+        var pdf = new jsPDF('p','pt','a4');
+        pdf.addHTML(document.body,function() {
+          pdf.save(name +'-'+type+'.pdf');
+          $('.download-pdf').show();
+        });        
+      });
+    });
+  </script>
+
 </head>
 <body>
-
   <!-- <a href="https://github.com/brodock" id="github"><img alt="Fork me on GitHub" src="/images/forkme_right_gray_6d6d6d.png"></a> -->
 
-  <div id="doc2" class="yui-t7">
+  <div class="pull-right">
+    <a href="#" class="btn btn-primary download-pdf">下载我的简历</a>
+  </div>
+
+  <div id="doc2" class="yui-t7" id="editor">
   <div id="inner">
   
     <div id="hd">

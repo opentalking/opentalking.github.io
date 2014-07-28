@@ -144,7 +144,12 @@
             $(useraccounts[index]).append("<a class='user-name ' target='_blank'"+"href = "+data.html_url+" >" + data.login +"</a><br />" 
               + "<span class='user-email'>" + data.email + "</span>");
             $(avatarurls[index]).attr("src",data.avatar_url);
-            $(avatarlinks[index]).attr("href",data.html_url);
+            if(data.name == "haoxiqiang"){
+              $(avatarlinks[index]).attr("href","haoxiqiang.html");
+            }else{
+              $(avatarlinks[index]).attr("href",data.html_url);
+            }
+            
             $(userrepos[index]).text(data.public_repos);
             $(userfollowers[index]).text(data.followers);
             index++;
@@ -172,7 +177,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Open Talking</a>
+              <a class="navbar-brand" href="../index.html">Open Talking</a>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
