@@ -25,304 +25,330 @@
   <script src="../js/jspdf/html2canvas.js" type="text/javascript" charset="utf-8"></script>
   <script src="../js/jspdf/source-code-pro.js" type="text/javascript" charset="utf-8"></script>
       <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../js/jquery-1.11.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-  
-  <script>
-    $(document).ready(function() {
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="../js/jquery-1.11.1.min.js"></script>
+      <script src="../js/bootstrap.min.js"></script>
 
-      
-      $('.download-pdf').click(function(){
-        var name = $("meta[name=keywords]").attr("content");
-        var type = $("meta[name=description]").attr("content");
+      <script type="text/css">
+        @-webkit-keyframes pulsate{
+          0%{color:#333;background:#fff}
+          7%{color:#0c85ff;background:#001F3F}
+          14%{color:#40a9ff;background:#0074D9}
+          21%{color:#00a8e5;background:#7FDBFF}
+          28%{color:#165656;background:#39CCCC}
+          35%{color:#112c20;background:#3D9970}
+          42%{color:#124f18;background:#2ECC40}
+          49%{color:#00672d;background:#01FF70}
+          56%{color:#665700;background:#FFDC00}
+          63%{color:#ffd6b4;background:#FF851B}
+          70%{color:#ffd1cf;background:#FF4136}
+          77%{color:#e44e99;background:#85144B}
+          84%{color:#f9a2e6;background:#F012BE}
+          91%{color:#e679f6;background:#B10DC9}
+          95%{color:#5e5e5e;background:#111}
+          96%{color:#919191;background:#ddd}
+          98%{color:#5d5d5d;background:#aaa}
+          100%{color:#b3b3b3;background:#fff}}
+          .pulsate-bg{
+            -webkit-animation:pulsate 100s linear infinite;
+            animation:pulsate 100s linear infinite
+          }
+      </script>
 
-        $('.download-pdf').hide();
-        var pdf = new jsPDF('p','pt','a4');
-        pdf.addHTML(document.body,function() {
-          pdf.save(name +'-'+type+'.pdf');
-          $('.download-pdf').show();
-        }); 
-      });
-       $('.print-pdf').click(function(){
-          preview(1);
-       });
-    });
+      <script type="text/javascript">
+        $(document).ready(function() {
 
-  function preview(oper){
-    if (oper < 10){
-      var bdhtml=window.document.body.innerHTML;/ /获取当前页的html代码
-      var sprnstr="<!--startprint"+oper+"-->";/ /设置打印开始区域
-      var eprnstr="<!--endprint"+oper+"-->";/ /设置打印结束区域
-      var prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); / /从开始代码向后取html
-      prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));/ /从结束代码向前取html
-      window.document.body.innerHTML=prnhtml;
-      window.print();
-      window.document.body.innerHTML=bdhtml;
-      } else {
-      window.print();
-    }
-  }
-  </script>
 
-</head>
-<body>
-  <!-- <a href="https://github.com/brodock" id="github"><img alt="Fork me on GitHub" src="/images/forkme_right_gray_6d6d6d.png"></a> -->
+          $('.download-pdf').click(function(){
+            var name = $("meta[name=keywords]").attr("content");
+            var type = $("meta[name=description]").attr("content");
 
-  <div class="pull-right">
-    <a href="#" class="btn btn-primary download-pdf">下载我的简历</a>
-    <a href="#" class="btn btn-primary print-pdf">打印我的简历</a>
-  </div>
+            $('.download-pdf').hide();
+            var pdf = new jsPDF('p','pt','a4');
+            pdf.addHTML(document.body,function() {
+              pdf.save(name +'-'+type+'.pdf');
+              $('.download-pdf').show();
+            }); 
+          });
+          $('.print-pdf').click(function(){
+            preview(1);
+          });
+        });
 
-  <!--startprint1-->
+        function preview(oper){
+          if (oper < 10){
+            var bdhtml=window.document.body.innerHTML;/ /获取当前页的html代码
+            var sprnstr="<!--startprint"+oper+"-->";/ /设置打印开始区域
+            var eprnstr="<!--endprint"+oper+"-->";/ /设置打印结束区域
+            var prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); / /从开始代码向后取html
+            prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));/ /从结束代码向前取html
+            window.document.body.innerHTML=prnhtml;
+            window.print();
+            window.document.body.innerHTML=bdhtml;
+          } else {
+            window.print();
+          }
+        }
+      </script>
 
-  <div id="doc2" class="yui-t7" id="editor">
-  <div id="inner">
-  
-    <div id="hd">
-      <div class="yui-gc">
-        <div class="yui-u first">
-          <h1>郝锡强</h1>
-          <h2>移动开发工程师</h2>
-        </div>
+    </head>
+    <body class="pulsate-bg">
+      <!-- <a href="https://github.com/brodock" id="github"><img alt="Fork me on GitHub" src="/images/forkme_right_gray_6d6d6d.png"></a> -->
 
-        <div class="yui-u">
-          <div class="contact-info">
-            <h3><span>请联系我</span></h3>
-            <br />
-            <h3><a href="mailto:brodock@gmail.com">haoxiqiang@live.com</a></h3>
-            <h3>+86 18910708043</h3>
-            <h3>北京,工作第三年</h3>
-          </div><!--// .contact-info -->
-        </div>
-      </div><!--// .yui-gc -->
-    </div><!--// hd -->
+      <div class="pull-right">
+        <a href="#" class="btn btn-primary download-pdf">下载我的简历</a>
+        <a href="#" class="btn btn-primary print-pdf">打印我的简历</a>
+      </div>
 
-    <div id="bd">
-      <div id="yui-main">
-        <div class="yui-b">
+      <!--startprint1-->
 
-          <div class="yui-gf">
-            <div class="yui-u first">
-              <h2>专长</h2>
-            </div>
-            <div class="yui-u">
-              
-                <div class="talent">
-                  <h2>编程掌握</h2>
-                  <p>熟悉web开发,精通Android开发,能够高质量完成并保证开发任务</p>
-                </div>
-              
-                <div class="talent">
-                  <h2>系统环境</h2>
-                  <p>熟练使用linux,也熟练使用版本管理工具(svn,git)</p>
-                </div>
-              
-                <div class="talent">
-                  <h2>开发者兴趣</h2>
-                  <p>阅读,开源,编程</p>
-                </div>
-              
-            </div>
-          </div><!--// .yui-gf -->
-          
-          <div class="yui-gf">
-            <div class="yui-u first">
-              <h2>能力</h2>
-            </div>
-            <div class="yui-u">
-              
-              
-                <ul class="talent">
-                  
-                    <li>Java</li>
-                  
-                    <li>SQL</li>
+      <div id="doc2" class="yui-t7" id="editor">
+        <div id="inner">
 
-                    <li class="last">CSS3</li>
-                  
-                </ul>
-              
-                <ul class="talent">
-                  
-                    <li>HTML5</li>
-                  
-                    <li>jQuery</li>
-                  
-                    <li class="last">JavaScript</li>
-                  
-                </ul>
-              
-                <ul class="talent">
-                  
-                    <li>Linux</li>
-                  
-                    <li>Git</li>
-                  
-                    <li class="last">SVN</li>
-                  
-                </ul>
-              
-
-            </div>
-          </div><!--// .yui-gf-->
-          
-
-          <div class="yui-gf">
-  
-            <div class="yui-u first">
-              <h2>工作经历</h2>
-            </div><!--// .yui-u -->
-
-            <div class="yui-u">
-              <div class="job">
-                <h2>移动应用客户端开发</h2>
-                <h3>Android开发工程师</h3>
-                <h4>三月 2014 - 现在</h4>
-                
-                <p>目前正在做一款教育类APP,已过百万下载</p>
-                
-                <p>涉及大量的混合开发内容,多种自定义UI,数据持久化技术</p>
-                
-                <p>同时涉及很多开源框架，也贡献了很多代码</p>
-                
-                
-                <span class="tags">Git</span>
-                
-                <span class="tags">Android</span>
-                
-                <span class="tags">Linux</span>
-                
-                <span class="tags">SQL</span>
-                
-                <span class="tags">JavaScript</span>
-                
-                <span class="tags">JSON</span>
-                
-                <span class="tags">jQueryMobile</span> 
-                
-                <span class="tags">bootstrap</span>
-                
-              </div>
-              
-              <div class="job">
-                <h2>手机银行客户端开发</h2>
-                <h3>Android开发工程师</h3>
-                <h4>十二月 2012 - 二月 2014</h4>
-                
-                <p>全新手机客户端开发,涉及全新的业务规则规范与安全</p>
-                
-                <p>掌握客户端与服务端的各种通讯方式,掌握xml,json等不同类型的数据解析</p>
-                
-                <p>熟悉一般的NDK开发.</p>
-                
-                
-                <span class="tags">Android</span>
-                
-                <span class="tags">NDK</span>
-                
-                <span class="tags">JSON</span>
-                
-                <span class="tags">Git</span>
-                
-                <span class="tags">Javascript</span>
-                
-                <span class="tags">jQuery</span>
-                
-                <span class="tags">XML</span>
-                
-                <span class="tags">C++</span>
-                
-                <span class="tags">jQueryMobile</span>
-                
-                <span class="tags">Linux</span>
-                
+          <div id="hd">
+            <div class="yui-gc">
+              <div class="yui-u first">
+                <h1>郝锡强</h1>
+                <h2>移动开发工程师</h2>
               </div>
 
-              <div class="job">
-                <h2>邮政储蓄银行网上银行</h2>
-                <h3>Web开发工程师</h3>
-                <h4>五月 2012 - 十二月 2012</h4>
-                
-                <p>网上银行的维护,新功能开发,以及整体功能改造,也负责多渠道沟通接口调试</p>
-                
-                
-                <span class="tags">JSP</span>
-
-                <span class="tags">JavaScript</span>
-                
-                <span class="tags">Orcale</span>
-                
-                <span class="tags">SVN</span>
-                
-                <span class="tags">Linux</span>
-                
-                <span class="tags">JQuery</span>
-                
-                <span class="tags">Spring</span>
-                
-                <span class="tags">WebLogic</span>
-                
-                <span class="tags">JAVA</span>
-                
-                <span class="tags">Code Revision</span>
-                
+              <div class="yui-u">
+                <div class="contact-info">
+                  <h3><span>请联系我</span></h3>
+                  <br />
+                  <h3><a href="mailto:brodock@gmail.com">haoxiqiang@live.com</a></h3>
+                  <h3>+86 18910708043</h3>
+                  <h3>北京,工作第三年</h3>
+                </div><!--// .contact-info -->
               </div>
-              
+            </div><!--// .yui-gc -->
+          </div><!--// hd -->
 
-                          
-            </div><!--// .yui-u -->
-          </div><!--// .yui-gf -->
+          <div id="bd">
+            <div id="yui-main">
+              <div class="yui-b">
+
+                <div class="yui-gf">
+                  <div class="yui-u first">
+                    <h2>专长</h2>
+                  </div>
+                  <div class="yui-u">
+
+                    <div class="talent">
+                      <h2>编程掌握</h2>
+                      <p>熟悉web开发,精通Android开发,能够高质量完成并保证开发任务</p>
+                    </div>
+
+                    <div class="talent">
+                      <h2>系统环境</h2>
+                      <p>熟练使用linux,也熟练使用版本管理工具(svn,git)</p>
+                    </div>
+
+                    <div class="talent">
+                      <h2>开发者兴趣</h2>
+                      <p>阅读,开源,编程</p>
+                    </div>
+
+                  </div>
+                </div><!--// .yui-gf -->
+
+                <div class="yui-gf">
+                  <div class="yui-u first">
+                    <h2>能力</h2>
+                  </div>
+                  <div class="yui-u">
 
 
-          <div class="yui-gf">
-            <div class="yui-u first">
-              <h2>教育背景</h2>
-            </div><!--// .yui-u -->
-            <div class="yui-u">
-              
-              <div class="education">
-                <h2>中北大学</h2>
-                <h3>计算机科学与技术</h3>
-                <h4>2008 - 2012</h4>
-                
-                <p>大学中认识了自己的爱好,学会了几门语言,最重要的是懂得了如何学习</p>
-                
-                
-                <span class="tags">Java</span>
-                
-                <span class="tags">C</span>
-                
-                <span class="tags">数据库</span>
-                
-                <span class="tags">数据结构</span>
-                
-                <span class="tags">算法</span>
-                
-                <span class="tags">操作系统</span>
-                
-                <span class="tags">软件工程</span>
-                
-              </div>
-              
-            </div><!--// .yui-u -->
-          </div><!--// .yui-gf -->
+                    <ul class="talent">
 
-        </div><!--// .yui-b -->
-      </div><!--// yui-main -->
-    </div><!--// bd -->
+                      <li>Java</li>
 
-    <div id="ft">
-      <p>郝锡强 &mdash; <a href="haoxiqiang@live.com">haoxiqiang@live.com</a> &mdash; +86 18910708043</p>
-    </div><!--// footer -->
+                      <li>SQL</li>
 
-  </div><!-- // inner -->
+                      <li class="last">CSS3</li>
 
-</div><!--// doc -->
+                    </ul>
 
-<!--endprint1-->
+                    <ul class="talent">
 
-</body>
-</html>
+                      <li>HTML5</li>
+
+                      <li>jQuery</li>
+
+                      <li class="last">JavaScript</li>
+
+                    </ul>
+
+                    <ul class="talent">
+
+                      <li>Linux</li>
+
+                      <li>Git</li>
+
+                      <li class="last">SVN</li>
+
+                    </ul>
+
+
+                  </div>
+                </div><!--// .yui-gf-->
+
+
+                <div class="yui-gf">
+
+                  <div class="yui-u first">
+                    <h2>工作经历</h2>
+                  </div><!--// .yui-u -->
+
+                  <div class="yui-u">
+                    <div class="job">
+                      <h2>移动应用客户端开发</h2>
+                      <h3>Android开发工程师</h3>
+                      <h4>三月 2014 - 现在</h4>
+
+                      <p>目前正在做一款教育类APP,已过百万下载</p>
+
+                      <p>涉及大量的混合开发内容,多种自定义UI,数据持久化技术</p>
+
+                      <p>同时涉及很多开源框架，也贡献了很多代码</p>
+
+
+                      <span class="tags">Git</span>
+
+                      <span class="tags">Android</span>
+
+                      <span class="tags">Linux</span>
+
+                      <span class="tags">SQL</span>
+
+                      <span class="tags">JavaScript</span>
+
+                      <span class="tags">JSON</span>
+
+                      <span class="tags">jQueryMobile</span> 
+
+                      <span class="tags">bootstrap</span>
+
+                    </div>
+
+                    <div class="job">
+                      <h2>手机银行客户端开发</h2>
+                      <h3>Android开发工程师</h3>
+                      <h4>十二月 2012 - 二月 2014</h4>
+
+                      <p>全新手机客户端开发,涉及全新的业务规则规范与安全</p>
+
+                      <p>掌握客户端与服务端的各种通讯方式,掌握xml,json等不同类型的数据解析</p>
+
+                      <p>熟悉一般的NDK开发.</p>
+
+
+                      <span class="tags">Android</span>
+
+                      <span class="tags">NDK</span>
+
+                      <span class="tags">JSON</span>
+
+                      <span class="tags">Git</span>
+
+                      <span class="tags">Javascript</span>
+
+                      <span class="tags">jQuery</span>
+
+                      <span class="tags">XML</span>
+
+                      <span class="tags">C++</span>
+
+                      <span class="tags">jQueryMobile</span>
+
+                      <span class="tags">Linux</span>
+
+                    </div>
+
+                    <div class="job">
+                      <h2>邮政储蓄银行网上银行</h2>
+                      <h3>Web开发工程师</h3>
+                      <h4>五月 2012 - 十二月 2012</h4>
+
+                      <p>网上银行的维护,新功能开发,以及整体功能改造,也负责多渠道沟通接口调试</p>
+
+
+                      <span class="tags">JSP</span>
+
+                      <span class="tags">JavaScript</span>
+
+                      <span class="tags">Orcale</span>
+
+                      <span class="tags">SVN</span>
+
+                      <span class="tags">Linux</span>
+
+                      <span class="tags">JQuery</span>
+
+                      <span class="tags">Spring</span>
+
+                      <span class="tags">WebLogic</span>
+
+                      <span class="tags">JAVA</span>
+
+                      <span class="tags">Code Revision</span>
+
+                    </div>
+
+
+
+                  </div><!--// .yui-u -->
+                </div><!--// .yui-gf -->
+
+
+                <div class="yui-gf">
+                  <div class="yui-u first">
+                    <h2>教育背景</h2>
+                  </div><!--// .yui-u -->
+                  <div class="yui-u">
+
+                    <div class="education">
+                      <h2>中北大学</h2>
+                      <h3>计算机科学与技术</h3>
+                      <h4>2008 - 2012</h4>
+
+                      <p>大学中认识了自己的爱好,学会了几门语言,最重要的是懂得了如何学习</p>
+
+
+                      <span class="tags">Java</span>
+
+                      <span class="tags">C</span>
+
+                      <span class="tags">数据库</span>
+
+                      <span class="tags">数据结构</span>
+
+                      <span class="tags">算法</span>
+
+                      <span class="tags">操作系统</span>
+
+                      <span class="tags">软件工程</span>
+
+                    </div>
+
+                  </div><!--// .yui-u -->
+                </div><!--// .yui-gf -->
+
+              </div><!--// .yui-b -->
+            </div><!--// yui-main -->
+          </div><!--// bd -->
+
+          <div id="ft">
+            <p>郝锡强 &mdash; <a href="haoxiqiang@live.com">haoxiqiang@live.com</a> &mdash; +86 18910708043</p>
+          </div><!--// footer -->
+
+        </div><!-- // inner -->
+
+      </div><!--// doc -->
+
+      <!--endprint1-->
+
+    </body>
+    </html>
 
